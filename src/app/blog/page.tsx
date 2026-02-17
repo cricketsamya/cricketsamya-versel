@@ -36,7 +36,7 @@ export default async function BlogIndexPage() {
         ))}
         {posts.length === 0 ? (
           <div className="rounded-2xl border border-dashed border-slate-300 p-6 text-sm text-slate-600 dark:border-slate-700 dark:text-slate-300">
-            No posts yet. Add markdown files to <code>vercel-site/content/posts</code>.
+            No posts yet. Add markdown files to <code>content/posts</code>.
           </div>
         ) : null}
       </div>

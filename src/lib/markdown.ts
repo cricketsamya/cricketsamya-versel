@@ -52,8 +52,25 @@ function tryPaths(...absolutePaths: string[]) {
   return absolutePaths[0];
 }
 
+function contentRootCandidates(): string[] {
+  const cwd = process.cwd();
+
+  // Handle common Vercel/monorepo setups where the build "Root Directory"
+  // may be the repo root, a `vercel-site/` subdir, or a nested app folder.
+  return [
+    path.join(cwd, "content"),
+    path.join(cwd, "vercel-site", "content"),
+    path.join(cwd, "..", "content"),
+    path.join(cwd, "..", "vercel-site", "content"),
+  ];
+}
+
+function resolveContentRoot(): string {
+  return tryPaths(...contentRootCandidates());
+}
+
 function localContentPath(...parts: string[]) {
-  return path.join(process.cwd(), "content", ...parts);
+  return path.join(resolveContentRoot(), ...parts);
 }
 
 function legacyJekyllPostsPath() {
