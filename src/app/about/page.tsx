@@ -51,6 +51,7 @@ export default function AboutPage() {
               width={1200}
               height={420}
               className="h-auto w-full"
+              unoptimized
             />
           </div>
           <figcaption className="mt-2 text-sm text-slate-600 dark:text-slate-300">

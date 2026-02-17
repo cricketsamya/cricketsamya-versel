@@ -48,6 +48,7 @@ export default async function BlogIndexPage() {
               width={1200}
               height={360}
               className="h-auto w-full"
+              unoptimized
             />
           </div>
         </div>

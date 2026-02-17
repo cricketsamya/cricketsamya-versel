@@ -75,6 +75,7 @@ export default function HomePage() {
             height={420}
             className="h-auto w-full"
             priority={false}
+            unoptimized
           />
         </div>
       </section>
