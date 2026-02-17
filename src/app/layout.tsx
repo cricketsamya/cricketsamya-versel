@@ -6,11 +6,23 @@ import { SiteFooter } from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
   title: {
-    default: "Sameer Kulkarni",
+    default: "Sameer Kulkarni — Java backend engineer in Berlin",
     template: "%s · Sameer Kulkarni",
   },
   description:
-    "Senior Software Engineer in Berlin. Writing about backend engineering (Java/Kotlin), cloud, and reliability.",
+    "Sameer Kulkarni is a Java/Kotlin backend engineer in Berlin. Notes on backend engineering, cloud & platform engineering, and building reliable systems.",
+  keywords: [
+    "Sameer Kulkarni",
+    "Java backend engineer Berlin",
+    "Kotlin backend engineer",
+    "backend engineering",
+    "cloud platform engineering",
+    "AWS",
+    "Kubernetes",
+    "CI/CD",
+    "observability",
+    "reliability engineering",
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

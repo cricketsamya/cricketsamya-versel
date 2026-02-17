@@ -1,7 +1,20 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "CV",
+  title: "CV / Resume",
+  description:
+    "CV of Sameer Kulkarni — Java/Kotlin backend engineer in Berlin. Experience across backend, platform, cloud infrastructure, and engineering leadership.",
+  keywords: [
+    "Java backend engineer Berlin",
+    "Kotlin",
+    "resume",
+    "CV",
+    "platform engineering",
+    "AWS",
+    "Kubernetes",
+    "Terraform",
+    "CI/CD",
+  ],
 };
 
 export default function CvPage() {

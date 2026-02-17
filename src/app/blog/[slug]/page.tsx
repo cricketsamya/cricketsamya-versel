@@ -8,9 +8,13 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const post = await getPost(slug);
+  const keywords = Array.from(
+    new Set([...(post.frontmatter.tags ?? []), ...(post.frontmatter.categories ?? []), "backend engineering"])
+  );
   return {
     title: post.frontmatter.title,
     description: post.frontmatter.description,
+    keywords,
   };
 }
 

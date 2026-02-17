@@ -4,6 +4,9 @@ import { listPosts } from "@/lib/markdown";
 
 export const metadata: Metadata = {
   title: "Blog",
+  description:
+    "Posts by Sameer Kulkarni about backend engineering, Java/Kotlin, cloud & platform engineering, and production reliability.",
+  keywords: ["backend engineering", "Java", "Kotlin", "cloud platform", "AWS", "Kubernetes", "observability"],
 };
 
 export default async function BlogIndexPage() {

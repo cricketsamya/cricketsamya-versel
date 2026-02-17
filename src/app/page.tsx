@@ -1,4 +1,12 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Home",
+  description:
+    "Sameer Kulkarni — Java/Kotlin backend engineer in Berlin. Writing about backend engineering, cloud & platform work, and keeping production boring.",
+  keywords: ["Java backend engineer Berlin", "Kotlin", "backend engineering", "cloud platform", "observability", "AWS"],
+};
 
 export default function HomePage() {
   return (

@@ -2,6 +2,18 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About",
+  description:
+    "About Sameer Kulkarni — a Java/Kotlin backend engineer in Berlin. I build reliable systems and write about backend engineering, cloud & platform, and observability.",
+  keywords: [
+    "Java backend engineer Berlin",
+    "Kotlin",
+    "backend engineering",
+    "platform engineering",
+    "AWS",
+    "Kubernetes",
+    "observability",
+    "reliability",
+  ],
 };
 
 export default function AboutPage() {
