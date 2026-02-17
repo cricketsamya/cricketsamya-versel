@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "About",
@@ -42,22 +41,6 @@ export default function AboutPage() {
             </div>
           ))}
         </div>
-
-        <figure className="mt-6">
-          <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-950">
-            <Image
-              src="/assets/diagrams/backend-pipeline.svg"
-              alt="Backend pipeline diagram"
-              width={1200}
-              height={420}
-              className="h-auto w-full"
-              unoptimized
-            />
-          </div>
-          <figcaption className="mt-2 text-sm text-slate-600 dark:text-slate-300">
-            A simple sketch of the kind of backend + events + analytics work I enjoy.
-          </figcaption>
-        </figure>
       </div>
 
       <h2>What I work on</h2>

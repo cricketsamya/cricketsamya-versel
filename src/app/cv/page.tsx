@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "CV / Resume",
@@ -64,41 +63,6 @@ export default function CvPage() {
         customer needs. Regular one-on-one engagements with team members have fostered a culture of continuous
         improvement and personal development, reflecting my commitment to both technological excellence and team growth.
       </p>
-
-      <h2>Selected work (visual)</h2>
-      <p>A few lightweight visuals to show the shape of the systems I build.</p>
-
-      <figure className="not-prose">
-        <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-950">
-          <Image
-            src="/assets/diagrams/backend-pipeline.svg"
-            alt="Backend pipeline: clients → API → Kafka → warehouse, with observability"
-            width={1200}
-            height={420}
-            className="h-auto w-full"
-            unoptimized
-          />
-        </div>
-        <figcaption className="mt-2 text-sm text-slate-600 dark:text-slate-300">
-          Typical flow: API + events + analytics, with observability built in.
-        </figcaption>
-      </figure>
-
-      <figure className="not-prose">
-        <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-950">
-          <Image
-            src="/assets/diagrams/cicd-migration.svg"
-            alt="CI/CD migration: Jenkins/Nexus to GitHub Actions/Packages"
-            width={1200}
-            height={360}
-            className="h-auto w-full"
-            unoptimized
-          />
-        </div>
-        <figcaption className="mt-2 text-sm text-slate-600 dark:text-slate-300">
-          Example modernization: Jenkins/Nexus → GitHub Actions + Packages.
-        </figcaption>
-      </figure>
 
       <h2>Experience</h2>
       <h3>Senior Software Engineer · WeatherPromise (Dec 2023 - Present)</h3>

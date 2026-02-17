@@ -1,6 +1,5 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -47,37 +46,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="grid gap-4 md:grid-cols-2">
-        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950">
-          <h2 className="text-base font-semibold text-slate-900 dark:text-slate-50">What I build</h2>
-          <p className="mt-2 text-sm text-slate-700 dark:text-slate-200">
-            Backends that are reliable, observable, and easy to run — APIs, event-driven workflows, and data/analytics
-            pipelines.
-          </p>
-          <ul className="mt-4 space-y-2 text-sm text-slate-700 dark:text-slate-200">
-            <li>
-              <span className="font-medium">Backend</span>: Java/Kotlin, Node.js/TypeScript
-            </li>
-            <li>
-              <span className="font-medium">Platform</span>: AWS, Kubernetes, Terraform, CI/CD
-            </li>
-            <li>
-              <span className="font-medium">Reliability</span>: dashboards, alerts, tracing, load testing
-            </li>
-          </ul>
-        </div>
-
-        <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-950">
-          <Image
-            src="/assets/diagrams/backend-pipeline.svg"
-            alt="Backend pipeline diagram"
-            width={1200}
-            height={420}
-            className="h-auto w-full"
-            priority={false}
-            unoptimized
-          />
-        </div>
+      <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+        <h2 className="text-base font-semibold text-slate-900 dark:text-slate-50">What I build</h2>
+        <p className="mt-2 text-sm text-slate-700 dark:text-slate-200">
+          Backends that are reliable, observable, and easy to run — APIs, event-driven workflows, and data/analytics
+          pipelines.
+        </p>
+        <ul className="mt-4 space-y-2 text-sm text-slate-700 dark:text-slate-200">
+          <li>
+            <span className="font-medium">Backend</span>: Java/Kotlin, Node.js/TypeScript
+          </li>
+          <li>
+            <span className="font-medium">Platform</span>: AWS, Kubernetes, Terraform, CI/CD
+          </li>
+          <li>
+            <span className="font-medium">Reliability</span>: dashboards, alerts, tracing, load testing
+          </li>
+        </ul>
       </section>
 
       <section className="grid gap-4 md:grid-cols-3">
