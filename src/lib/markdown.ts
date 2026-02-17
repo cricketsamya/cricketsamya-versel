@@ -18,6 +18,33 @@ export type MarkdownDoc = {
   contentHtml: string;
 };
 
+function cleanDescription(s: string) {
+  return s
+    .replace(/`{1,3}[^`]+`{1,3}/g, "")
+    .replace(/!\[[^\]]*]\([^)]*\)/g, "")
+    .replace(/\[([^\]]+)]\(([^)]+)\)/g, "$1")
+    .replace(/[*_]+/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function inferDescriptionFromMarkdown(markdown: string): string | undefined {
+  const blocks = markdown
+    .split(/\n\s*\n/g)
+    .map((b) => b.trim())
+    .filter(Boolean);
+
+  for (const block of blocks) {
+    if (block.startsWith("#")) continue;
+    if (block.startsWith("```")) continue;
+    // allow blockquotes if they are all we have
+    const cleaned = cleanDescription(block.replace(/^>\s?/gm, ""));
+    if (cleaned.length >= 20) return cleaned.slice(0, 180);
+  }
+
+  return undefined;
+}
+
 function tryPaths(...absolutePaths: string[]) {
   for (const p of absolutePaths) {
     if (fs.existsSync(p)) return p;
@@ -65,13 +92,18 @@ export async function getPost(slug: string): Promise<MarkdownDoc> {
   const contentHtml = processed.toString();
 
   const inferredDate = inferDateFromSlug(slug);
+  const inferredDescription = inferDescriptionFromMarkdown(content);
 
   return {
     slug,
     frontmatter: {
       title: (data.title as string) ?? slug,
       date: data.date ? String(data.date) : inferredDate,
-      description: data.description ? String(data.description) : undefined,
+      description: data.description
+        ? String(data.description)
+        : data.excerpt
+          ? String(data.excerpt)
+          : inferredDescription,
       tags: Array.isArray(data.tags) ? (data.tags as string[]) : undefined,
       categories: Array.isArray(data.categories) ? (data.categories as string[]) : undefined,
     },
@@ -88,14 +120,19 @@ export async function listPosts(): Promise<Array<Omit<MarkdownDoc, "contentHtml"
         path.join(legacyJekyllPostsPath(), `${slug}.md`)
       );
       const raw = fs.readFileSync(fullPath, "utf8");
-      const { data } = matter(raw);
+      const { data, content } = matter(raw);
       const inferredDate = inferDateFromSlug(slug);
+      const inferredDescription = inferDescriptionFromMarkdown(content);
       return {
         slug,
         frontmatter: {
           title: (data.title as string) ?? slug,
           date: data.date ? String(data.date) : inferredDate,
-          description: data.description ? String(data.description) : undefined,
+          description: data.description
+            ? String(data.description)
+            : data.excerpt
+              ? String(data.excerpt)
+              : inferredDescription,
           tags: Array.isArray(data.tags) ? (data.tags as string[]) : undefined,
           categories: Array.isArray(data.categories) ? (data.categories as string[]) : undefined,
         },
