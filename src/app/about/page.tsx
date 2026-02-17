@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "About",
@@ -44,11 +45,12 @@ export default function AboutPage() {
 
         <figure className="mt-6">
           <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-950">
-            <img
+            <Image
               src="/assets/diagrams/backend-pipeline.svg"
               alt="Backend pipeline diagram"
+              width={1200}
+              height={420}
               className="h-auto w-full"
-              loading="lazy"
             />
           </div>
           <figcaption className="mt-2 text-sm text-slate-600 dark:text-slate-300">

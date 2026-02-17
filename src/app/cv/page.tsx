@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "CV / Resume",
@@ -18,32 +19,6 @@ export const metadata: Metadata = {
 };
 
 export default function CvPage() {
-  const terraformSnippet = `# Terraform: small, boring infrastructure building blocks
-module "service" {
-  source  = "./modules/service"
-  name    = "pricing-api"
-  runtime = "kubernetes"
-
-  observability = {
-    dashboards = true
-    alerts     = true
-  }
-}`;
-
-  const githubActionsSnippet = `# GitHub Actions: CI workflow outline
-name: build
-on: [push, pull_request]
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - run: npm ci
-      - run: npm test`;
-
   return (
     <div className="prose prose-slate max-w-none dark:prose-invert">
       <h1>CV</h1>
@@ -95,11 +70,12 @@ jobs:
 
       <figure className="not-prose">
         <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-950">
-          <img
+          <Image
             src="/assets/diagrams/backend-pipeline.svg"
             alt="Backend pipeline: clients → API → Kafka → warehouse, with observability"
+            width={1200}
+            height={420}
             className="h-auto w-full"
-            loading="lazy"
           />
         </div>
         <figcaption className="mt-2 text-sm text-slate-600 dark:text-slate-300">
@@ -109,28 +85,18 @@ jobs:
 
       <figure className="not-prose">
         <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-950">
-          <img
+          <Image
             src="/assets/diagrams/cicd-migration.svg"
             alt="CI/CD migration: Jenkins/Nexus to GitHub Actions/Packages"
+            width={1200}
+            height={360}
             className="h-auto w-full"
-            loading="lazy"
           />
         </div>
         <figcaption className="mt-2 text-sm text-slate-600 dark:text-slate-300">
           Example modernization: Jenkins/Nexus → GitHub Actions + Packages.
         </figcaption>
       </figure>
-
-      <h2>Small snippets</h2>
-      <p>Short examples (not copy-paste perfect) to make the work tangible.</p>
-      <h3>Infrastructure as code</h3>
-      <pre>
-        <code>{terraformSnippet}</code>
-      </pre>
-      <h3>CI workflow</h3>
-      <pre>
-        <code>{githubActionsSnippet}</code>
-      </pre>
 
       <h2>Experience</h2>
       <h3>Senior Software Engineer · WeatherPromise (Dec 2023 - Present)</h3>

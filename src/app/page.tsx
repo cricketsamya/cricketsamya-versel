@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -67,11 +68,13 @@ export default function HomePage() {
         </div>
 
         <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-950">
-          <img
+          <Image
             src="/assets/diagrams/backend-pipeline.svg"
             alt="Backend pipeline diagram"
+            width={1200}
+            height={420}
             className="h-auto w-full"
-            loading="lazy"
+            priority={false}
           />
         </div>
       </section>

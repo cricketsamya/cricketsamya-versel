@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getPost, listPostSlugs } from "@/lib/markdown";
+import Image from "next/image";
 
 export async function generateStaticParams() {
   return listPostSlugs().map((slug) => ({ slug }));
@@ -27,11 +28,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       {post.frontmatter.header?.overlay_image ? (
         <figure className="not-prose">
           <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-950">
-            <img
+            <Image
               src={post.frontmatter.header.overlay_image}
               alt=""
+              width={1200}
+              height={630}
               className="h-auto w-full"
-              loading="eager"
+              priority
             />
           </div>
           {post.frontmatter.header.caption ? (

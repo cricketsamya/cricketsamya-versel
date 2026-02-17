@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { listPosts } from "@/lib/markdown";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -41,11 +42,12 @@ export default async function BlogIndexPage() {
           </div>
 
           <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-950">
-            <img
+            <Image
               src="/assets/diagrams/cicd-migration.svg"
               alt="CI/CD modernization diagram"
+              width={1200}
+              height={360}
               className="h-auto w-full"
-              loading="lazy"
             />
           </div>
         </div>
@@ -62,11 +64,12 @@ export default async function BlogIndexPage() {
               {post.frontmatter.header?.overlay_image ? (
                 <div className="hidden shrink-0 sm:block">
                   <div className="h-16 w-24 overflow-hidden rounded-xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
-                    <img
+                    <Image
                       src={post.frontmatter.header.overlay_image}
                       alt=""
+                      width={96}
+                      height={64}
                       className="h-full w-full object-cover"
-                      loading="lazy"
                     />
                   </div>
                 </div>
