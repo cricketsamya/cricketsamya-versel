@@ -10,6 +10,10 @@ export type Frontmatter = {
   description?: string;
   tags?: string[];
   categories?: string[];
+  header?: {
+    overlay_image?: string;
+    caption?: string;
+  };
 };
 
 export type MarkdownDoc = {
@@ -110,6 +114,16 @@ export async function getPost(slug: string): Promise<MarkdownDoc> {
 
   const inferredDate = inferDateFromSlug(slug);
   const inferredDescription = inferDescriptionFromMarkdown(content);
+  const header =
+    data.header && typeof data.header === "object"
+      ? {
+          overlay_image:
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (data.header as any).overlay_image ? String((data.header as any).overlay_image) : undefined,
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          caption: (data.header as any).caption ? String((data.header as any).caption) : undefined,
+        }
+      : undefined;
 
   return {
     slug,
@@ -123,6 +137,7 @@ export async function getPost(slug: string): Promise<MarkdownDoc> {
           : inferredDescription,
       tags: Array.isArray(data.tags) ? (data.tags as string[]) : undefined,
       categories: Array.isArray(data.categories) ? (data.categories as string[]) : undefined,
+      header,
     },
     contentHtml,
   };
@@ -140,6 +155,15 @@ export async function listPosts(): Promise<Array<Omit<MarkdownDoc, "contentHtml"
       const { data, content } = matter(raw);
       const inferredDate = inferDateFromSlug(slug);
       const inferredDescription = inferDescriptionFromMarkdown(content);
+      const header =
+        data.header && typeof data.header === "object"
+          ? {
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              overlay_image: (data.header as any).overlay_image ? String((data.header as any).overlay_image) : undefined,
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              caption: (data.header as any).caption ? String((data.header as any).caption) : undefined,
+            }
+          : undefined;
       return {
         slug,
         frontmatter: {
@@ -152,6 +176,7 @@ export async function listPosts(): Promise<Array<Omit<MarkdownDoc, "contentHtml"
               : inferredDescription,
           tags: Array.isArray(data.tags) ? (data.tags as string[]) : undefined,
           categories: Array.isArray(data.categories) ? (data.categories as string[]) : undefined,
+          header,
         },
       };
     })

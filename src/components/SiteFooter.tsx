@@ -8,6 +8,9 @@ export function SiteFooter() {
             <a className="hover:underline" href="https://github.com/cricketsamya" target="_blank" rel="noreferrer">
               GitHub
             </a>
+            <a className="hover:underline" href="https://medium.com/@cricketsamya" target="_blank" rel="noreferrer">
+              Medium
+            </a>
             <a
               className="hover:underline"
               href="https://www.linkedin.com/in/sameerkulkarni30/"

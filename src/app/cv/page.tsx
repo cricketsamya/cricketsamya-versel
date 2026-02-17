@@ -18,6 +18,32 @@ export const metadata: Metadata = {
 };
 
 export default function CvPage() {
+  const terraformSnippet = `# Terraform: small, boring infrastructure building blocks
+module "service" {
+  source  = "./modules/service"
+  name    = "pricing-api"
+  runtime = "kubernetes"
+
+  observability = {
+    dashboards = true
+    alerts     = true
+  }
+}`;
+
+  const githubActionsSnippet = `# GitHub Actions: CI workflow outline
+name: build
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm test`;
+
   return (
     <div className="prose prose-slate max-w-none dark:prose-invert">
       <h1>CV</h1>
@@ -34,6 +60,11 @@ export default function CvPage() {
         <li>
           <a href="https://www.linkedin.com/in/sameerkulkarni30/" target="_blank" rel="noreferrer">
             linkedin.com/in/sameerkulkarni30
+          </a>
+        </li>
+        <li>
+          <a href="https://medium.com/@cricketsamya" target="_blank" rel="noreferrer">
+            medium.com/@cricketsamya
           </a>
         </li>
         <li>
@@ -58,6 +89,48 @@ export default function CvPage() {
         customer needs. Regular one-on-one engagements with team members have fostered a culture of continuous
         improvement and personal development, reflecting my commitment to both technological excellence and team growth.
       </p>
+
+      <h2>Selected work (visual)</h2>
+      <p>A few lightweight visuals to show the shape of the systems I build.</p>
+
+      <figure className="not-prose">
+        <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-950">
+          <img
+            src="/assets/diagrams/backend-pipeline.svg"
+            alt="Backend pipeline: clients → API → Kafka → warehouse, with observability"
+            className="h-auto w-full"
+            loading="lazy"
+          />
+        </div>
+        <figcaption className="mt-2 text-sm text-slate-600 dark:text-slate-300">
+          Typical flow: API + events + analytics, with observability built in.
+        </figcaption>
+      </figure>
+
+      <figure className="not-prose">
+        <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-950">
+          <img
+            src="/assets/diagrams/cicd-migration.svg"
+            alt="CI/CD migration: Jenkins/Nexus to GitHub Actions/Packages"
+            className="h-auto w-full"
+            loading="lazy"
+          />
+        </div>
+        <figcaption className="mt-2 text-sm text-slate-600 dark:text-slate-300">
+          Example modernization: Jenkins/Nexus → GitHub Actions + Packages.
+        </figcaption>
+      </figure>
+
+      <h2>Small snippets</h2>
+      <p>Short examples (not copy-paste perfect) to make the work tangible.</p>
+      <h3>Infrastructure as code</h3>
+      <pre>
+        <code>{terraformSnippet}</code>
+      </pre>
+      <h3>CI workflow</h3>
+      <pre>
+        <code>{githubActionsSnippet}</code>
+      </pre>
 
       <h2>Experience</h2>
       <h3>Senior Software Engineer · WeatherPromise (Dec 2023 - Present)</h3>

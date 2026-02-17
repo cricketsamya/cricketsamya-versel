@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-label="CI/CD migration diagram">
+  <defs>
+    <style>
+      .bg { fill: #ffffff; }
+      .title { fill: #0f172b; font: 22px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; font-weight: 650; }
+      .muted { fill: #64748b; font: 16px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; }
+      .label { fill: #0f172b; font: 18px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; font-weight: 600; }
+      .boxOld { fill: #fff7ed; stroke: #fdba74; stroke-width: 2; }
+      .boxNew { fill: #ecfeff; stroke: #67e8f9; stroke-width: 2; }
+      .arrow { stroke: #334155; stroke-width: 3; fill: none; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1200" height="360" rx="24"/>
+  <text class="title" x="48" y="64">CI/CD modernization (example)</text>
+  <text class="muted" x="48" y="92">A small visual of the migration path Ive done in real teams.</text>
+
+  <rect class="boxOld" x="70" y="140" width="420" height="160" rx="18"/>
+  <text class="label" x="110" y="190">Before</text>
+  <text class="muted" x="110" y="220">Jenkins pipelines</text>
+  <text class="muted" x="110" y="248">Nexus / Artifactory</text>
+  <text class="muted" x="110" y="276">Manual credentials + upkeep</text>
+
+  <rect class="boxNew" x="710" y="140" width="420" height="160" rx="18"/>
+  <text class="label" x="750" y="190">After</text>
+  <text class="muted" x="750" y="220">GitHub Actions (YAML workflows)</text>
+  <text class="muted" x="750" y="248">GitHub Packages</text>
+  <text class="muted" x="750" y="276">Clear ownership + faster iteration</text>
+
+  <path class="arrow" d="M 510 220 L 690 220" marker-end="url(#arrowhead)"/>
+  <text class="muted" x="530" y="205">migrate</text>
+</svg>
+
