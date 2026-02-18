@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 
 type EmailLinkProps = {
   user: string;
@@ -10,17 +10,18 @@ type EmailLinkProps = {
 };
 
 export function EmailLink({ user, domain, label = "Email", className }: EmailLinkProps) {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
-
   const email = useMemo(() => `${user}@${domain}`, [user, domain]);
-  const href = mounted ? `mailto:${email}` : undefined;
 
   return (
-    <a className={className} href={href} onClick={(e) => (!href ? e.preventDefault() : undefined)}>
+    <button
+      type="button"
+      className={className}
+      onClick={() => {
+        window.location.href = `mailto:${email}`;
+      }}
+    >
       {label}
-    </a>
+    </button>
   );
 }
 
