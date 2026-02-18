@@ -1,3 +1,5 @@
+import { EmailLink } from "@/components/EmailLink";
+
 export function SiteFooter() {
   return (
     <footer className="border-t border-slate-200 py-10 dark:border-slate-800">
@@ -19,9 +21,7 @@ export function SiteFooter() {
             >
               LinkedIn
             </a>
-            <a className="hover:underline" href="mailto:mail@sameerkulkarni.de">
-              Email
-            </a>
+            <EmailLink className="hover:underline" user="mail" domain="sameerkulkarni.de" label="Email" />
           </div>
         </div>
       </div>
