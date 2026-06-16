@@ -5,8 +5,27 @@ html {
   text-rendering: optimizeLegibility;
 }
 
+/* Serif display font for prose headings, with tighter tracking. */
+.prose :is(h1, h2, h3, h4) {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+  letter-spacing: -0.02em;
+}
+
+/* Indigo accent links. */
 .prose a {
+  color: #4f46e5;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
+.prose a:hover {
+  color: #4338ca;
+}
+
+.dark .prose a {
+  color: #a5b4fc;
+}
+
+.dark .prose a:hover {
+  color: #c7d2fe;
+}

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { listPosts } from "@/lib/markdown";
+import { formatDate } from "@/lib/date";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -43,17 +44,22 @@ export default async function BlogIndexPage() {
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-950 dark:hover:bg-slate-900"
+            className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-indigo-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-950 dark:hover:border-indigo-500/50"
           >
-            <div className="flex flex-col gap-1">
-              <div className="text-lg font-semibold">{post.frontmatter.title}</div>
+            <div className="flex flex-col gap-1.5">
               {post.frontmatter.date ? (
-                <div className="text-sm text-slate-600 dark:text-slate-300">{post.frontmatter.date}</div>
+                <div className="text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">
+                  {formatDate(post.frontmatter.date)}
+                </div>
               ) : null}
+              <div className="font-display text-lg font-semibold tracking-tight group-hover:text-indigo-600 dark:group-hover:text-indigo-400">
+                {post.frontmatter.title}
+              </div>
               {post.frontmatter.description ? (
-                <div className="pt-1 text-sm text-slate-700 dark:text-slate-200">{post.frontmatter.description}</div>
+                <div className="text-sm text-slate-700 dark:text-slate-300">{post.frontmatter.description}</div>
               ) : null}
-              <div className="flex flex-col gap-1">
+              <div className="pt-1 text-sm font-medium text-indigo-600 opacity-0 transition group-hover:opacity-100 dark:text-indigo-400">
+                Read post →
               </div>
             </div>
           </Link>

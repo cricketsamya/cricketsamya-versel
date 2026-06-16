@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -19,11 +20,22 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="prose prose-slate max-w-none dark:prose-invert">
-      <h1>About</h1>
-      <p>
-        Hi, I’m Sameer — a Senior Software Engineer based in Berlin. I build backend systems and write about the
-        practical side of engineering: reliability, observability, and shipping.
-      </p>
+      <div className="not-prose mb-8 flex flex-col items-start gap-5 sm:flex-row sm:items-center">
+        <Image
+          src="/assets/images/bio-photo.png"
+          alt="Sameer Kulkarni"
+          width={112}
+          height={112}
+          className="h-24 w-24 shrink-0 rounded-full object-cover ring-2 ring-indigo-500/30"
+        />
+        <div>
+          <h1 className="font-display text-3xl font-semibold tracking-tight">About</h1>
+          <p className="mt-2 text-slate-700 dark:text-slate-200">
+            Hi, I’m Sameer — a Senior Software Engineer based in Berlin. I build backend systems and write about the
+            practical side of engineering: reliability, observability, and shipping.
+          </p>
+        </div>
+      </div>
 
       <div className="not-prose">
         <div className="mt-6 grid gap-4 md:grid-cols-3">
