@@ -13,6 +13,8 @@ tags:
   - logging
 classes: wide
 taxonomy: Micrometer Metrics Cardinality
+header:
+  overlay_image: /assets/images/metric-cardinality.png
 author_profile: true
 date: '2026-08-26'
 description: >-
@@ -20,6 +22,8 @@ description: >-
   one time series per stranger in production. The bill is the second-worst
   consequence.
 ---
+![Two panels. Left: limiter times outcome, both bounded, ten indigo squares, ten series. Right: the same metric times client.ip, a fading field of squares running off the edge, one per distinct address, infinite series.](/assets/diagrams/metric-cardinality.svg)
+
 ## The symptom
 
 There wasn't one. That's the problem.
