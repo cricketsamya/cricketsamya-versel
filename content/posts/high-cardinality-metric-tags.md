@@ -22,9 +22,11 @@ description: >-
 ---
 ## The symptom
 
-TODO(sameer): fill in how this actually surfaced — the AWS bill line item, a dashboard that stopped loading, or someone else noticing first. One or two sentences, in the order it really happened.
+There wasn't one. That's the problem.
 
-What I can say without checking anything: nothing broke. No alarm fired, no request failed, no latency moved. The code did exactly what I told it to do. That is the part worth remembering, because this class of mistake has no runtime symptom at all — right up until it becomes a line item.
+Nothing broke. No alarm fired, no request failed, no latency moved, no error rate ticked up. The tests passed, staging looked exactly the way it was supposed to, and the code did precisely what I told it to do. A cardinality bug produces no runtime signal, because from the application's point of view nothing *is* wrong — you asked for a counter tagged by client IP and you got exactly that, once per distinct client address, forever.
+
+So it surfaces the way cost problems surface: out of band, on a bill, well after the commit that caused it, spotted by someone who wasn't looking for it. By then the deploy is buried under a hundred others and nobody connects "we improved our observability" to "this line item grew".
 
 ## The mistake, in five lines of code
 
@@ -65,8 +67,6 @@ So, an illustrative example — these are made-up round numbers, not my figures:
 - **$12,000 per month**
 
 Fifty thousand distinct client IPs in a month is not a big public API. That is the number that should make you uncomfortable — not because it's large, but because it's so ordinary.
-
-TODO(sameer): swap in the real series count and bill delta, or cut this line and let the illustrative example stand alone.
 
 ## The second, worse problem
 
