@@ -13,6 +13,8 @@ tags:
   - logging
 classes: wide
 taxonomy: Micrometer Metrics Cardinality
+header:
+  overlay_image: /assets/images/metric-cardinality.png
 author_profile: true
 date: '2026-08-26'
 description: >-

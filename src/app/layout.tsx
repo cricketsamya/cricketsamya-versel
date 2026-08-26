@@ -19,6 +19,7 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://sameerkulkarni.de"),
   title: {
     default: "Sameer Kulkarni — Java backend engineer in Berlin",
     template: "%s · Sameer Kulkarni",

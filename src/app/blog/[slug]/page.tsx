@@ -12,10 +12,25 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const keywords = Array.from(
     new Set([...(post.frontmatter.tags ?? []), ...(post.frontmatter.categories ?? []), "backend engineering"])
   );
+  const image = post.frontmatter.header?.overlay_image;
   return {
     title: post.frontmatter.title,
     description: post.frontmatter.description,
     keywords,
+    openGraph: {
+      type: "article",
+      title: post.frontmatter.title,
+      description: post.frontmatter.description,
+      url: `/blog/${slug}`,
+      publishedTime: post.frontmatter.date,
+      images: image ? [image] : undefined,
+    },
+    twitter: {
+      card: image ? "summary_large_image" : "summary",
+      title: post.frontmatter.title,
+      description: post.frontmatter.description,
+      images: image ? [image] : undefined,
+    },
   };
 }
 
