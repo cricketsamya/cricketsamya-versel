@@ -214,7 +214,7 @@ export default function CvPage() {
 
         <Panel title="Top skills">
           <div className="flex flex-wrap gap-2">
-            {["DevOps", "Ruby", "CDK"].map((s) => (
+            {["Software Engineering", "Java", "Kotlin", "Python"].map((s) => (
               <span
                 key={s}
                 className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200"
