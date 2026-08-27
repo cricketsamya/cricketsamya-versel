@@ -10,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@vercel/analytics": "latest",
     "gray-matter": "latest",
     "next": "latest",
     "next-themes": "latest",
