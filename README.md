@@ -4,7 +4,7 @@ Personal site and blog built with Next.js (App Router), Tailwind CSS and TypeScr
 
 ## Run locally
 
-From the repo root:
+Requires Node 22 (see `.nvmrc`; run `nvm use` if you use nvm). From the repo root:
 
 ```bash
 npm install
